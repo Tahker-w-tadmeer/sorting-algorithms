@@ -1,39 +1,39 @@
-import math
-
 
 def sort(array):
-    length = len(array)
-
-    if length < 2:
-        return array
-
-    middle = math.floor(length / 2)
-    left = sort(array[0:middle])
-    right = sort(array[middle:])
-
-    return _merge(left, right)
+    _sort(array, 0, len(array) - 1)
 
 
-def _merge(left, right):
-    len_left = len(left)
-    len_right = len(right)
-    i = j = 0
-    merged = []
-
+def merge(arr, left, mid, right):
+    left_arr = arr[left:mid+1]
+    right_arr = arr[mid+1:right+1]
+    len_right = len(right_arr)
+    len_left = len(left_arr)
+    i = 0
+    j = 0
+    k = left
     while i < len_left and j < len_right:
-        if left[i] < right[j]:
-            merged.append(left[i])
+        if left_arr[i] < right_arr[j]:
+            arr[k] = left_arr[i]
             i += 1
+            k += 1
         else:
-            merged.append(right[j])
+            arr[k] = right_arr[j]
             j += 1
+            k += 1
 
     while i < len_left:
-        merged.append(left[i])
+        arr[k] = left_arr[i]
         i += 1
-
+        k += 1
     while j < len_right:
-        merged.append(right[j])
+        arr[k] = right_arr[j]
         j += 1
+        k += 1
 
-    return merged
+
+def _sort(arr, first, last):
+    if first < last:
+        mid = (first + last) // 2
+        _sort(arr, first, mid)
+        _sort(arr, mid + 1, last)
+        merge(arr, first, mid, last)

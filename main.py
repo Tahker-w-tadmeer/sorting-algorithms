@@ -31,7 +31,7 @@ for i in range(len(arrays)):
 
     array = arrays[i].copy()
     start_time = time.time()
-    array = merge.sort(array)
+    merge.sort(array)
     end_time = time.time()
     print("Merge Sort: " + str((end_time-start_time) * m) + "µs")
 
