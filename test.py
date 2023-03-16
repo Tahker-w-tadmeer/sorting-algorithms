@@ -35,5 +35,9 @@ selection.sort(array)
 print("Selection: " + ("Sorted" if(array == sorted_array) else "NOT"))
 
 array = unsorted_array.copy()
-print("KPartition: " + str(kpartition.find_kth_element(array, 16) == sorted_array[16]))
+print("KPartition: " + str(kpartition.find_smallest(array, 16) == sorted_array[16]))
 
+
+array = unsorted_array.copy()
+quick.randomized_partitioning(array, 0, len(array)-1)
+print(array)
