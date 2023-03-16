@@ -2,36 +2,30 @@ import random
 
 
 def sort(array):
-    array_length = len(array)
+    sort_implementation(array, 0, len(array)-1)
 
-    if array_length <= 1:
-        return
 
-    if array_length == 2:
-        if array[0] > array[1]:
-            temp = array[0]
-            array[0] = array[1]
-            array[1] = temp
-        return
+def select_random(first, last):
+    return random.randint(first, last)
 
-    pivot = random.randint(0, array_length-1)
-    array_less = []
-    array_more = []
 
-    for i in range(array_length):
-        if array[i] < array[pivot]:
-            array_less.append(array[i])
-        else:
-            array_more.append(array[i])
+def randomized_partitioning(array, first, last):
+    pivot = select_random(first, last)
+    array[pivot], array[first] = array[first], array[pivot]
+    pivot = first
 
-    sort(array_more)
-    sort(array_less)
+    i = first + 1
+    for j in range(first + 1, last + 1):
+        if array[j] <= array[pivot]:
+            array[i], array[j] = array[j], array[i]
+            i += 1
+    array[first], array[i - 1] = array[i - 1], array[first]
 
-    i = 0
-    for j in range(len(array_less)):
-        array[i] = array_less[j]
-        i += 1
+    return i - 1
 
-    for j in range(len(array_more)):
-        array[i] = array_more[j]
-        i += 1
+
+def sort_implementation(array, first, last):
+    if first < last:
+        pivot = randomized_partitioning(array, first, last)
+        sort_implementation(array, first, pivot - 1)
+        sort_implementation(array, pivot + 1, last)

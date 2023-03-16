@@ -4,6 +4,8 @@ import heap
 import time
 import random
 import insertion
+import hybrid
+import selection
 
 array10m = range(10_000_000)
 
@@ -47,10 +49,24 @@ for i in range(len(arrays)):
     end_time = time.time()
     print("Heap Sort: " + str((end_time-start_time) * m) + "µs")
 
+    # array = arrays[i].copy()
+    # start_time = time.time()
+    # insertion.sort(array)
+    # end_time = time.time()
+    # print("Insertion Sort: " + str((end_time-start_time) * m) + "µs")
+
+    # array = arrays[i].copy()
+    # start_time = time.time()
+    # selection.sort(array)
+    # end_time = time.time()
+    # print("Selection Sort: " + str((end_time-start_time) * m) + "µs")
+
     array = arrays[i].copy()
     start_time = time.time()
-    insertion.sort(array)
+    hybrid.sort(array)
     end_time = time.time()
-    print("Insertion Sort: " + str((end_time-start_time) * m) + "µs")
+    print("Hybrid Sort: " + str((end_time-start_time) * m) + "µs")
 
     print()
+
+
