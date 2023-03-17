@@ -6,6 +6,7 @@ import random
 import insertion
 import hybrid
 import selection
+import matplotlib.pyplot as plt
 
 array10m = range(10_000_000)
 
@@ -27,46 +28,58 @@ arrays = [
     array1m,
 ]
 
-m = 1_000_000
+xMerge = []
+yMerge = []
+
+xQuick = []
+yQuick = []
+
+xInsertion = []
+yInsertion = []
+
+xSelection = []
+ySelection = []
+
+xHybrid = []
+yHybrid = []
+
+xHeap = []
+yHeap = []
+
+
+def add_data(arr, algorithm, points):
+    m = 1_000
+    start = time.time()
+    algorithm.sort(arr)
+    end = time.time()
+    points[1].append((end-start) * m)
+    points[0].append(len(arr))
+
+
 for i in range(len(arrays)):
-    print("Array " + str(i + 1))
+    add_data(arrays[i].copy(), merge, [xMerge, yMerge])
 
-    array = arrays[i].copy()
-    start_time = time.time()
-    merge.sort(array)
-    end_time = time.time()
-    print("Merge Sort: " + str((end_time-start_time) * m) + "µs")
+    add_data(arrays[i].copy(), quick, [xQuick, yQuick])
 
-    array = arrays[i].copy()
-    start_time = time.time()
-    quick.sort(array)
-    end_time = time.time()
-    print("Quick Sort: " + str((end_time-start_time) * m) + "µs")
+    add_data(arrays[i].copy(), heap, [xHeap, yHeap])
 
-    array = arrays[i].copy()
-    start_time = time.time()
-    heap.sort(array)
-    end_time = time.time()
-    print("Heap Sort: " + str((end_time-start_time) * m) + "µs")
+    add_data(arrays[i].copy(), hybrid, [xHybrid, yHybrid])
 
-    # array = arrays[i].copy()
-    # start_time = time.time()
-    # insertion.sort(array)
-    # end_time = time.time()
-    # print("Insertion Sort: " + str((end_time-start_time) * m) + "µs")
+    add_data(arrays[i].copy(), selection, [xSelection, ySelection])
 
-    # array = arrays[i].copy()
-    # start_time = time.time()
-    # selection.sort(array)
-    # end_time = time.time()
-    # print("Selection Sort: " + str((end_time-start_time) * m) + "µs")
-
-    array = arrays[i].copy()
-    start_time = time.time()
-    hybrid.sort(array)
-    end_time = time.time()
-    print("Hybrid Sort: " + str((end_time-start_time) * m) + "µs")
-
-    print()
+    add_data(arrays[i].copy(), insertion, [xInsertion, yInsertion])
 
 
+plt.plot(xMerge, yMerge, label="Merge", markersize=8, marker='o')
+plt.plot(xQuick, yQuick, label="Quick", markersize=8, marker='o')
+plt.plot(xHeap, yHeap, label="Heap", markersize=8, marker='o')
+plt.plot(xHybrid, yHybrid, label="Hybrid", markersize=8, marker='o')
+plt.plot(xSelection, ySelection, label="Selection", markersize=8, marker='o')
+plt.plot(xInsertion, yInsertion, label="Insertion", markersize=8, marker='o')
+
+
+plt.xlabel('Input Size (N)')
+plt.ylabel('Execution time (ms)')
+plt.title("Line graph")
+plt.legend()
+plt.show()
