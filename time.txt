@@ -106,3 +106,15 @@ Selection
 Length: 100,000
 Time in millis: 794351.9933223724
 
+Insertion
+Length: 100,000
+Time in millis: 1736509.296655655
+
+Selection
+Length: 250,000
+Time in millis: 6500574.188232422
+
+Insertion
+Length: 250,000
+Time in millis: 8826843.533754349
+
