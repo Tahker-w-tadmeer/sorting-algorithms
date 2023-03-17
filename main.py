@@ -57,18 +57,25 @@ def add_data(algorithm, points):
         points[0].append(len(arr))
 
 
-add_data(merge, [xMerge, yMerge])
+mergeThread = threading.Thread(target=add_data, args=(merge, [xMerge, yMerge]))
+mergeThread.start()
+heapThread = threading.Thread(target=add_data, args=(heap, [xHeap, yHeap]))
+heapThread.start()
+quickThread = threading.Thread(target=add_data, args=(quick, [xQuick, yQuick]))
+quickThread.start()
+hybridThread = threading.Thread(target=add_data, args=(hybrid, [xHybrid, yHybrid]))
+hybridThread.start()
+selectionThread = threading.Thread(target=add_data, args=(selection, [xSelection, ySelection]))
+selectionThread.start()
+insertionThread = threading.Thread(target=add_data, args=(insertion, [xInsertion, yInsertion]))
+insertionThread.start()
 
-add_data(quick, [xQuick, yQuick])
-
-add_data(heap, [xHeap, yHeap])
-
-add_data(hybrid, [xHybrid, yHybrid])
-
-add_data(selection, [xSelection, ySelection])
-
-add_data(insertion, [xInsertion, yInsertion])
-
+mergeThread.join()
+heapThread.join()
+quickThread.join()
+hybridThread.join()
+selectionThread.join()
+insertionThread.join()
 
 plt.plot(xMerge, yMerge, label="Merge", markersize=8, marker='o')
 plt.plot(xQuick, yQuick, label="Quick", markersize=8, marker='o')
