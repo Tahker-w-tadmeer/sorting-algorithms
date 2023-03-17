@@ -7,6 +7,7 @@ import insertion
 import hybrid
 import selection
 import matplotlib.pyplot as plt
+import threading
 
 array10m = range(10_000_000)
 
@@ -24,8 +25,6 @@ arrays = [
     array50k,
     array100k,
     array250k,
-    array500k,
-    array1m,
 ]
 
 xMerge = []
@@ -47,27 +46,28 @@ xHeap = []
 yHeap = []
 
 
-def add_data(arr, algorithm, points):
-    m = 1_000
-    start = time.time()
-    algorithm.sort(arr)
-    end = time.time()
-    points[1].append((end-start) * m)
-    points[0].append(len(arr))
+def add_data(algorithm, points):
+    for i in range(len(arrays)):
+        arr = arrays[i].copy()
+        m = 1_000
+        start = time.time()
+        algorithm.sort(arr)
+        end = time.time()
+        points[1].append((end-start) * m)
+        points[0].append(len(arr))
 
 
-for i in range(len(arrays)):
-    add_data(arrays[i].copy(), merge, [xMerge, yMerge])
+add_data(merge, [xMerge, yMerge])
 
-    add_data(arrays[i].copy(), quick, [xQuick, yQuick])
+add_data(quick, [xQuick, yQuick])
 
-    add_data(arrays[i].copy(), heap, [xHeap, yHeap])
+add_data(heap, [xHeap, yHeap])
 
-    add_data(arrays[i].copy(), hybrid, [xHybrid, yHybrid])
+add_data(hybrid, [xHybrid, yHybrid])
 
-    add_data(arrays[i].copy(), selection, [xSelection, ySelection])
+add_data(selection, [xSelection, ySelection])
 
-    add_data(arrays[i].copy(), insertion, [xInsertion, yInsertion])
+add_data(insertion, [xInsertion, yInsertion])
 
 
 plt.plot(xMerge, yMerge, label="Merge", markersize=8, marker='o')
