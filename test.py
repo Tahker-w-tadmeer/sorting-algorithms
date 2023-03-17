@@ -35,7 +35,11 @@ selection.sort(array)
 print("Selection: " + ("Sorted" if(array == sorted_array) else "NOT"))
 
 array = unsorted_array.copy()
-print("KPartition: " + str(kpartition.find_smallest(array, 16) == sorted_array[16]))
+element1 = sorted_array[16]
+element2 = kpartition.find_smallest(array, 16)
+print(element1)
+print(element2)
+print("KPartition: " + str(element1 == element2))
 
 
 array = unsorted_array.copy()
