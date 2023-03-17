@@ -1,0 +1,108 @@
+Merge
+Length: 1,000
+Time in millis: 3.0281543731689453
+
+Heap
+Length: 1,000
+Time in millis: 3.9708614349365234
+
+Quick
+Length: 1,000
+Time in millis: 2.001047134399414
+
+Hybrid
+Length: 1,000
+Time in millis: 2.003908157348633
+
+Insertion
+Length: 1,000
+Time in millis: 150.96116065979004
+
+Selection
+Length: 1,000
+Time in millis: 66.00594520568848
+
+Hybrid
+Length: 25,000
+Time in millis: 359.0977191925049
+
+Merge
+Length: 25,000
+Time in millis: 660.0003242492676
+
+Quick
+Length: 25,000
+Time in millis: 470.003604888916
+
+Heap
+Length: 25,000
+Time in millis: 1026.3869762420654
+
+Quick
+Length: 50,000
+Time in millis: 1076.5788555145264
+
+Merge
+Length: 50,000
+Time in millis: 1500.5524158477783
+
+Hybrid
+Length: 50,000
+Time in millis: 1631.1612129211426
+
+Heap
+Length: 50,000
+Time in millis: 3049.518823623657
+
+Quick
+Length: 100,000
+Time in millis: 3136.8188858032227
+
+Hybrid
+Length: 100,000
+Time in millis: 2838.9487266540527
+
+Merge
+Length: 100,000
+Time in millis: 3108.2072257995605
+
+Heap
+Length: 100,000
+Time in millis: 6279.012441635132
+
+Quick
+Length: 250,000
+Time in millis: 7515.39945602417
+
+Hybrid
+Length: 250,000
+Time in millis: 8570.226669311523
+
+Merge
+Length: 250,000
+Time in millis: 8725.730419158936
+
+Heap
+Length: 250,000
+Time in millis: 10391.180276870728
+
+Selection
+Length: 25,000
+Time in millis: 51184.24344062805
+
+Insertion
+Length: 25,000
+Time in millis: 110699.5530128479
+
+Selection
+Length: 50,000
+Time in millis: 184964.54238891602
+
+Insertion
+Length: 50,000
+Time in millis: 414248.58379364014
+
+Selection
+Length: 100,000
+Time in millis: 794351.9933223724
+

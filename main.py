@@ -70,13 +70,6 @@ selectionThread.start()
 insertionThread = threading.Thread(target=add_data, args=(insertion, [xInsertion, yInsertion]))
 insertionThread.start()
 
-mergeThread.join()
-heapThread.join()
-quickThread.join()
-hybridThread.join()
-selectionThread.join()
-insertionThread.join()
-
 plt.plot(xMerge, yMerge, label="Merge", markersize=8, marker='o')
 plt.plot(xQuick, yQuick, label="Quick", markersize=8, marker='o')
 plt.plot(xHeap, yHeap, label="Heap", markersize=8, marker='o')
